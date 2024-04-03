@@ -10,22 +10,35 @@
 // https://www.codewars.com/kata/5526fc09a1bbd946250002dc/train/dart
 
 void main() {
-  print(find([2, 4, 0, 100, 4, 11, 2602, 36])); // -->  11 (the only odd number)
   print(
-      find([160, 3, 1719, 19, 11, 13, -21])); // --> 160 (the only even number)
+      find3([2, 4, 0, 100, 4, 11, 2602, 36])); // -->  11 (the only odd number)
+  print(
+      find3([160, 3, 1719, 19, 11, 13, -21])); // --> 160 (the only even number)
 }
 
 int find(List<int> integers) {
   List<int> evenList = [];
   List<int> oddList = [];
   for (var integer in integers) {
-    if (integer % 2 == 0) {
+    if (integer.isEven) {
       evenList.add(integer);
     } else {
       oddList.add(integer);
     }
   }
-  return evenList.length == 1
-      ? integers[integers.indexOf(evenList[0])]
-      : integers[integers.indexOf(oddList[0])];
+  return evenList.length == 1 ? evenList[0] : oddList[0];
 }
+
+int find2(List<int> integers) {
+  List<int> evenList = [];
+  List<int> oddList = [];
+  for (var element in integers) {
+    element.isEven ? evenList.add(element) : oddList.add(element);
+  }
+  return evenList.length == 1 ? evenList[0] : oddList[0];
+}
+
+int find3(List<int> integers) => integers.firstWhere(
+    integers.getRange(0, 3).where((i) => i % 2 == 0).length > 1
+        ? (i) => i % 2 == 1
+        : (i) => i % 2 == 0);
