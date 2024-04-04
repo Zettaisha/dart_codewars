@@ -5,7 +5,7 @@
 // accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
 // accum("cwAt") -> "C-Ww-Aaa-Tttt"
 // The parameter of accum is a string which includes only letters from a..z and A..Z.
-
+// https://www.codewars.com/kata/5667e8f4e3f572a8f2000039/train/dart
 void main() {
   print(accum("abcd")); // -> "A-Bb-Ccc-Dddd"
   print(simpleAccum("RqaEzty")); // -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
