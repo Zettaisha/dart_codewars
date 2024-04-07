@@ -12,21 +12,36 @@
 // https://www.codewars.com/kata/58925dcb71f43f30cd00005f/train/dart
 
 void main() {
-  // print(latestClock(1, 9, 8, 3)); // 19:38
-  // print(latestClock(9, 1, 2, 5)); // 21:59
+  print(latestClock(1, 9, 8, 3)); // 19:38
+  print(latestClock(9, 1, 2, 5)); // 21:59
   print(latestClock(1, 2, 8, 9)); // 19:28
 }
 
 String latestClock(int a, int b, int c, int d) {
-  List<int> digits = [a, b, c, d].toList()..sort();
+  List<int> digits = [a, b, c, d]..sort();
+  List<int> digitsCopy = [...digits];
   List<int> result = [];
 
   // first digit of hours is max between 0 and 2
   for (var digit in digits.reversed) {
     if (digit == 2) {
-      // Проверяем наличие еще двух подходящих цифр для оставшихся позиций
-      bool hasHourDigits = digits.where((e) => e != digit).any((e) => e <= 3);
-      bool hasMinuteDigits = digits.where((e) => e != digit).any((e) => e <= 5);
+      digitsCopy.remove(digit);
+      bool hasHourDigits = digitsCopy.any((element) {
+        if (element <= 3) {
+          digitsCopy.remove(element);
+          return true;
+        } else {
+          return false;
+        }
+      });
+      bool hasMinuteDigits = digitsCopy.any((element) {
+        if (element <= 5) {
+          digitsCopy.remove(element);
+          return true;
+        } else {
+          return false;
+        }
+      });
       if (hasHourDigits && hasMinuteDigits) {
         result.add(digit);
         digits.remove(digit);
