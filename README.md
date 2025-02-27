@@ -7,6 +7,7 @@ You can clone and test it yourself if needed. Created for people to find solutio
 <ul>
   /lib:
 <li>N kyu</li>
+  <li>4 kyu</li>
   <li>5 kyu</li>
   <li>6 kyu</li>
   <li>7 kyu </li>
